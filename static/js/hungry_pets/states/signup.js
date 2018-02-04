@@ -7,7 +7,7 @@ app.config(function($stateProvider, CONSTANTS) {
   });
 });
 
-app.controller('SignupController', function(UserFactory, $scope) {
+app.controller('SignupController', function($state, $scope, UserFactory) {
   console.log('Register state loaded');
   $scope.errors = [];
 

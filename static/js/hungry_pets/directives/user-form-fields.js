@@ -38,7 +38,8 @@ app.directive('userFormFields', function(CONSTANTS) {
       };
 
       scope.$on("server-user-errors", function(event, errors_obj){
-        console.error("Got errors from server: %o", errors_obj);
+        scope.check_for_errors();
+
         for (var field in errors_obj) {
           if (errors_obj.hasOwnProperty(field)) {
             var field_errors = errors_obj[field];
@@ -46,9 +47,6 @@ app.directive('userFormFields', function(CONSTANTS) {
           }
         }
       });
-
-
-      scope.check_for_errors();
     } // End link
   }
 });
