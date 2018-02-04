@@ -13,12 +13,12 @@ app.directive('petListFilter', function(CONSTANTS, MiscUtils) {
         species_names: [],
         breed_names: [],
         min_price: 0,
-        max_price: 1000
+        max_price: 300
       };
 
       scope.price_slider_options = {
         floor: 0,
-        ceil: 450,
+        ceil: 300,
         onEnd: function() { refilter_pets(); }
       };
 

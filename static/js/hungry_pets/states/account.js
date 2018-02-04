@@ -1,6 +1,9 @@
 app.config(function($stateProvider, CONSTANTS) {
   $stateProvider.state('hungry_pets.account', {
     url: '/account',
+    permissions: {
+      authenticated: true
+    },
     templateUrl: CONSTANTS.root + '/states/account.html',
     controller: 'AccountController',
     resolve: {
