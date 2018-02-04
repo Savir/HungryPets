@@ -16,7 +16,7 @@ app.config(function($locationProvider, $urlRouterProvider, $stateProvider, CONST
     url: "",
     templateUrl: CONSTANTS.root + 'states/main.html'
   });
-  $urlRouterProvider.otherwise('/err');
+  $urlRouterProvider.otherwise('/home');  // If not logged, this will redirect to login
 });
 
 function HungryPetsCtrl() {};
@@ -25,9 +25,8 @@ app.controller('HungryPetsCtrl', HungryPetsCtrl);
 app.run(function($http, $transitions, AuthEnforcerService){
   $http.defaults.xsrfHeaderName = 'X-CSRFToken';
   $http.defaults.xsrfCookieName = 'csrftoken';
-  //$state.go('account');
   console.log("App running");
-  $transitions.onStart({}, function(transition) {
-    AuthEnforcerService.enforce_login(transition);
-  });
+  $transitions.onStart({},
+    function(transition) { AuthEnforcerService.enforce_login(transition); }
+  );
 });

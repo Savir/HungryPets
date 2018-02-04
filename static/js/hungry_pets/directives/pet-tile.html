@@ -1,8 +1,19 @@
-<li>
-    <span> Name: {{ pet.name }}</span>
-    <span ng-if="pet.price > 0">Price: {{ pet.price }}</span>
-    <span ng-if="pet.price == 0">Adopt me!</span>
-    <i ng-if="showHeart" ng-class="{'ion-ios-heart': pet.is_bookmarked, 'ion-ios-heart-outline': !pet.is_bookmarked}" ng-click="toggle_bookmark(pet)"></i>
-    <img ng-src="{{ pet.img }}" err-src="/static/images/placeholder/placeholder-ic.png" alt="" />
+<span class="list-group-item flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between">
+    <h5 class="mb-1 text-capitalize">{{:: pet.name }}</h5>
+    <span ng-if="showHeart"
+          ng-class="{'ion-ios-heart': pet.is_bookmarked, 'ion-ios-heart-outline': !pet.is_bookmarked}"
+          ng-click="toggle_bookmark(pet)">
+    </span>
+  </div>
 
-</li>
+  <div class="media">
+    <div class="thumbnail media-left col-md-8">
+       <img class="img-fluid" ng-src="{{ pet.img }}" alt="" />
+    </div>
+    <div class="media-body col-md-4">
+      <span ng-if="pet.price > 0">${{ pet.price }}</span>
+      <span ng-if="pet.price == 0">Adopt me!</span>
+    </div>
+  </div>
+</span>

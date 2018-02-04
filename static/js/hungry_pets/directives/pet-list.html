@@ -1,5 +1,4 @@
 <p>Pets:</p>
-
-<div ng-repeat="pet in pets">
-    <pet-tile pet="pet" show_heart="showHeart"></pet-tile>
+<div class="list-group">
+  <pet-tile ng-repeat="pet in pets" pet="pet" show_heart="showHeart"></pet-tile>
 </div>

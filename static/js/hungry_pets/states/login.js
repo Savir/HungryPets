@@ -26,7 +26,11 @@ app.controller('LoginController', function($state, $scope, UserFactory, pets) {
   $scope.login = function() {
     UserFactory.login($scope.email, $scope.password).then(
       function(res) {$state.go('hungry_pets.home');},
-      function(res) {console.err("Error %o", res);}
+      function(res) {console.error("Error %o", res);}
     );
-  }
+  };
+
+  $scope.go_to_signup = function() {
+    $state.go("hungry_pets.signup");
+  };
 });

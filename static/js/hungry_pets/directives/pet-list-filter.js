@@ -9,35 +9,47 @@ app.directive('petListFilter', function(CONSTANTS, MiscUtils) {
       var pets_copy = angular.copy(scope.pets);
       scope.species_names = MiscUtils.extract_uniques(scope.pets, 'species_name').sort();
       scope.breed_names = MiscUtils.extract_uniques(scope.pets, 'breed_name').sort();
+
+      var price_limits = {
+        min: 1000,
+        max: 0
+      };
+      pets_copy.forEach(function(pet){
+        if (price_limits.min > parseFloat(pet.price)) { price_limits.min = pet.price; }
+        if (price_limits.max < parseFloat(pet.price)) { price_limits.max = pet.price; }
+      });
+
       scope.filter = {
         species_names: [],
         breed_names: [],
-        min_price: 0,
-        max_price: 300
+        min_price: price_limits.min,
+        max_price: Math.ceil(price_limits.max)
       };
 
       scope.price_slider_options = {
-        floor: 0,
-        ceil: 300,
+        floor: Math.floor(price_limits.min),
+        ceil: Math.ceil(price_limits.max),
         onEnd: function() { refilter_pets(); }
       };
+      scope.$broadcast('rzSliderForceRender');
 
       function refilter_pets() {
         var new_pets = angular.copy(pets_copy);
         for (var i=new_pets.length - 1; i >= 0; i--) {
-          console.log("i=%s", i);
           var pet = new_pets[i];
           if (scope.filter.species_names.length > 0 && scope.filter.species_names.indexOf(pet.species_name) < 0) {
             new_pets.splice(i, 1);
+            continue;
           }
           if (scope.filter.breed_names.length > 0 && scope.filter.breed_names.indexOf(pet.breed_name) < 0) {
             new_pets.splice(i, 1);
+            continue;
           }
-          if (pet.price < scope.filter.min_price || pet.price > scope.filter.max_price) {
+          if (parseFloat(pet.price) < scope.filter.min_price || parseFloat(pet.price) > scope.filter.max_price) {
             new_pets.splice(i, 1);
+            continue;
           }
         }
-        console.log("After refilter got %s pets: %s", new_pets.length, new_pets);
         scope.pets = new_pets;
       }
 
@@ -51,8 +63,6 @@ app.directive('petListFilter', function(CONSTANTS, MiscUtils) {
         MiscUtils.toggle_value(scope.filter.breed_names, name);
         refilter_pets();
       }
-
-      console.log("got breed_names: %o",  scope.breed_names);
     }
   }
 });

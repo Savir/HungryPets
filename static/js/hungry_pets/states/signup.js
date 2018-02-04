@@ -9,6 +9,7 @@ app.config(function($stateProvider, CONSTANTS) {
 
 app.controller('SignupController', function(UserFactory, $scope) {
   console.log('Register state loaded');
+  $scope.errors = [];
 
   $scope.signup = function() {
     UserFactory.signup(
@@ -18,6 +19,9 @@ app.controller('SignupController', function(UserFactory, $scope) {
       $scope.phone_number,
       $scope.password,
       $scope.confirm_password
+    ).then(
+      function() { $state.go('hungry_pets.login'); },
+      function(err) { $scope.$broadcast("server-user-errors", err.data); }
     );
   };
 

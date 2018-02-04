@@ -15,10 +15,16 @@
           <label for="login__password">Password</label>
           <input type="password" class="form-control" id="login__password" ng-model="password" />
         </div>
-
-        <div class="form-group">
-          <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="btn-group">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          &nbsp;
+          <div class="form-group">
+            <button type="button" class="btn btn-outline-info" ng-click="go_to_signup()">Signup</button>
+          </div>
         </div>
+
       </form>
     </div>
   </div>
