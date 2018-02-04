@@ -1,0 +1,24 @@
+{
+  "name": "HungryPets",
+  "authors": [
+    "Savir <hector.blanco.rivas@gmail.com>"
+  ],
+  "description": "Sample app",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "static/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "^1.6.9",
+    "angular-ui-router": "^1.0.14",
+    "angular": "^1.6.9",
+    "bootstrap": "^4.0.0"
+  }
+}

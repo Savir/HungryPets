@@ -1,0 +1,42 @@
+# file types
+
+*.DS_Store
+*.pyc
+*.swp
+*.idea
+*.sqlite3
+*.prof
+*.ipynb
+local_settings.py
+*todo*
+*TODO*
+dump.rdb
+celerybeat.pid
+celerybeat-schedule
+checksum.json
+*__pycache__*
+
+# directories
+db/
+cache/
+silky_profs/
+node_modules/
+bower/
+bower_components/
+vendor/
+build/
+cover/
+dist/
+public/
+media/
+.vagrant/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+#SSL
+server.pem
+server.crt
+server.key

@@ -1,0 +1,8 @@
+cd ~/Documents/Tests/HungryRoot/HungryPets/docker/postgres-9.6/; \
+docker build --tag "postgres-hungryroot" \
+    --file ~/Documents/Tests/HungryRoot/HungryPets/docker/postgres-9.6/Dockerfile-postgresql \
+    ~/Documents/Tests/HungryRoot/HungryPets/docker/postgres-9.6/;
+docker run --name "postgres-hungryroot" \
+    --env POSTGRES_USER="hungry" \
+    --env POSTGRES_PASSWORD="r00t" \
+    --publish 5432:5432 -d "postgres-hungryroot"

@@ -1,0 +1,25 @@
+<p>Account</p>
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+    <h1>Update</h1>
+    <div class="well">
+      <form role="form" ng-submit="update_user()">
+        <user-form-fields
+              mode="update",
+              email="email",
+              first_name="first_name",
+              last_name="last_name",
+              phone_number="phone_number",
+              password="password",
+              confirm_password="confirm_password",
+        >
+        </user-form-fields>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
