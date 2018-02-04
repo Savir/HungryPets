@@ -14,3 +14,5 @@ STATICFILES_DIRS = [
 # serve media files from the filesystem by default on dev environments
 MEDIA_ROOT = ROOT_DIR + '/media/'
 MEDIA_URL = '/media/'
+# Whitenoise compression. See: http://whitenoise.evans.io/en/stable/#quickstart-for-django-apps
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
