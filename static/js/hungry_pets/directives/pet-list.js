@@ -4,9 +4,7 @@ app.directive('petList', function(CONSTANTS) {
     templateUrl: CONSTANTS.root + 'directives/pet-list.html',
     scope: {
       pets: '=',
-    },
-    link: function(scope) {
-      console.log("got pets: %o", scope.pets);
+      showHeart: '<'
     }
   }
 });

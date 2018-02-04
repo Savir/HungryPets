@@ -1,0 +1,16 @@
+<span ng-repeat="species_name in species_names">
+  <input type="checkbox" name="{{ species_name }}" value="species_name"
+         ng-checked="is_filter_by_species_name(species_name)"
+         ng-click="toggle_species_name_filter(species_name)"/>{{ species_name }}
+</span>
+
+<span ng-repeat="breed_name in breed_names">
+  <input type="checkbox" name="{{ breed_name }}" value="breed_name"
+         ng-checked="is_filter_by_breed_name(breed_name)"
+         ng-click="toggle_breed_name_filter(breed_name)"/>{{ breed_name }}
+</span>
+
+<rzslider rz-slider-model="filter.min_price"
+          rz-slider-high="filter.max_price"
+          rz-slider-options="price_slider_options">
+</rzslider>

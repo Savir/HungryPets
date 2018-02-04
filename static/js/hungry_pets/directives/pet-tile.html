@@ -1,0 +1,8 @@
+<li>
+    <span> Name: {{ pet.name }}</span>
+    <span ng-if="pet.price > 0">Price: {{ pet.price }}</span>
+    <span ng-if="pet.price == 0">Adopt me!</span>
+    <i ng-if="showHeart" ng-class="{'ion-ios-heart': pet.is_bookmarked, 'ion-ios-heart-outline': !pet.is_bookmarked}" ng-click="toggle_bookmark(pet)"></i>
+    <img ng-src="{{ pet.img }}" err-src="/static/images/placeholder/placeholder-ic.png" alt="" />
+
+</li>

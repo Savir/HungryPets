@@ -1,4 +1,4 @@
-app = angular.module('HungryPets', ['ui.router', 'ngCookies']);
+app = angular.module('HungryPets', ['ui.router', 'ngCookies', 'rzModule']);
 app.constant('CONSTANTS', {
   root: '/static/js/hungry_pets/'
 });

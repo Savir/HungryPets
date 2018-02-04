@@ -5,19 +5,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Hungry Pets</title>
-    <link rel="stylesheet" href="{% static 'bower/bootstrap/dist/css/bootstrap.min.css' %}" title="no title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'bower/bootstrap/dist/css/bootstrap.min.css' %}" title="no title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'bower/angularjs-slider/dist/rzslider.min.css' %}"title="no title" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'bower/Ionicons/css/ionicons.min.css' %}"title="no title" charset="utf-8">
 
     <script type="text/javascript" src="{% static 'bower/angular/angular.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bower/angular-cookies/angular-cookies.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bower/angular-ui-router/release/angular-ui-router.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bower/angularjs-slider/dist/rzslider.min.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'js/hungry_pets/main.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/directives/user-form-fields.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/directives/pet-list.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hungry_pets/directives/pet-list-filter.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hungry_pets/directives/pet-tile.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/states/login.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hungry_pets/states/home.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/states/signup.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/states/account.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/factories/user.factory.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/hungry_pets/factories/pets.factory.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hungry_pets/factories/bookmarks.factory.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/hungry_pets/services/misc_utils.service.js' %}"></script>
 </head>
 
 <base href="/hungry_pets/">
