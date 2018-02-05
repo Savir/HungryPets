@@ -18,3 +18,6 @@ class Pet(BaseModelMixin):
     img = models.ImageField(upload_to=get_pet_image, null=True, blank=True, max_length=255)
     breed = models.ForeignKey('hungry_pets.Breed', related_name='pets', on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    def __str__(self):
+        return self.name

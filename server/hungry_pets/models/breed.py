@@ -7,6 +7,9 @@ class Breed(BaseModelMixin):
     name = models.CharField(max_length=100, null=False, blank=True, default="")
     species = models.ForeignKey('hungry_pets.Species', related_name='breeds', on_delete=models.CASCADE)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         unique_together = ("name", "species")
 
