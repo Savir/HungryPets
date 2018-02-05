@@ -2,8 +2,8 @@
 <nav ng-if="user_display_name().length > 0"
      class="navbar navbar-inverse navbar-light border"
      role="navigation">
-    <span>Hi {{ user_display_name() }}</span>
-    <span><a href="" ng-click="logout()"><span class="glyphicon glyphicon-log-in"></span>Logout</a></span>
+    <span>Hi <a href="" ng-click="account()">{{ user_display_name() }}</a></span>
+    <span><a href="" ng-click="logout()">Logout</a></span>
 </nav>
 
 <div ui-view></div>

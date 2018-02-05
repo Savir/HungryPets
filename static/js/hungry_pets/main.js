@@ -29,7 +29,10 @@ app.run(function($http, $state, $transitions, $rootScope, UserFactory, AuthEnfor
   $rootScope.user_display_name = UserFactory.display_name;
   $rootScope.logout = function(){
     UserFactory.logout();
-    $state.go('hungry_pets.login')
+    $state.go('hungry_pets.login');
+  };
+  $rootScope.account = function() {
+    $state.go('hungry_pets.account');
   };
 
   $transitions.onStart({},

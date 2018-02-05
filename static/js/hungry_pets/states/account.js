@@ -46,6 +46,7 @@ app.controller('AccountController', function($scope, user, UserFactory) {
         $scope.first_name = res.data.first_name;
         $scope.last_name = res.data.last_name;
         $scope.phone_number = res.data.phone_number;
+        UserFactory.user_to_cookie(res.data);
       },
       function(err) { $scope.$broadcast("server-user-errors", err.data); }
     );
