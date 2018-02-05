@@ -22,10 +22,16 @@ app.config(function($locationProvider, $urlRouterProvider, $stateProvider, CONST
 function HungryPetsCtrl() {};
 app.controller('HungryPetsCtrl', HungryPetsCtrl);
 
-app.run(function($http, $transitions, AuthEnforcerService){
+app.run(function($http, $state, $transitions, $rootScope, UserFactory, AuthEnforcerService){
   $http.defaults.xsrfHeaderName = 'X-CSRFToken';
   $http.defaults.xsrfCookieName = 'csrftoken';
   console.log("App running");
+  $rootScope.user_display_name = UserFactory.display_name;
+  $rootScope.logout = function(){
+    UserFactory.logout();
+    $state.go('hungry_pets.login')
+  };
+
   $transitions.onStart({},
     function(transition) { AuthEnforcerService.enforce_login(transition); }
   );

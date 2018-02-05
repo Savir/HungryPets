@@ -12,5 +12,6 @@ urlpatterns = [
     })),
     path('pets/', pets.PetListHandler.as_view()),
     path('bookmarks/', bookmarks.BookmarkHandler.as_view({'put': 'update'})),
-    url('^login$', users.LoginHandler.as_view(), name='login')
+    url('^login$', users.LoginHandler.as_view(), name='login'),
+    url('^logout$', users.LogoutHandler.as_view(), name='login'),
 ]

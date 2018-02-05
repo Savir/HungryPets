@@ -1,4 +1,5 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
 from rest_framework import permissions, viewsets, generics
 from rest_framework import status
 from rest_framework.response import Response
@@ -50,3 +51,10 @@ class LoginHandler(generics.GenericAPIView):
         serializer_cls = self.get_serializer_class()
         serialized = serializer_cls(account)
         return Response(serialized.data)
+
+
+class LogoutHandler(generics.GenericAPIView):
+    def get(self, request):
+        logout(request)
+        return Response({})
+

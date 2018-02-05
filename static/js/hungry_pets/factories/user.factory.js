@@ -1,8 +1,12 @@
 app.factory('UserFactory', function($http, $cookies){
     var UserFactory = {
       login: login,
-      is_authenticated: is_authenticated,
+      logout: logout,
       current_user: current_user,
+      is_locally_authenticated: is_locally_authenticated,
+      user_to_cookie: user_to_cookie,
+      user_from_cookie: user_from_cookie,
+      display_name: display_name,
       signup: signup,
       partial_update: partial_update
     };
@@ -13,18 +17,50 @@ app.factory('UserFactory', function($http, $cookies){
         return $http.post('/hungry_pets/api/login', {
             email: email,
             password: password
-        });
+        }).then(
+          function(res){ user_to_cookie(res != null ? res.data : null); },
+          function(err){ user_to_cookie(null); }
+        );
     }
 
-    function is_authenticated() {
-        return !!$cookies.authenticatedAccount;
+    function logout() {
+      user_to_cookie(null);
+      $http.get('/hungry_pets/api/logout');
     }
 
     function current_user() {
       return $http.get('/hungry_pets/api/user/').then(
-        function(res) { return res.data; },
-        function(err) { return null; },
+        function(res) { user_to_cookie(res.data); return res.data; },
+        function(err) { user_to_cookie(null); return null; },
       );
+    }
+
+    function is_locally_authenticated() {
+        return user_from_cookie() != null;
+    }
+
+    function user_to_cookie(user) {
+      if (user == null) {
+        $cookies.remove("hungry_pets_user");
+      } else {
+        $cookies.putObject("hungry_pets_user", user);
+      }
+    }
+
+    function user_from_cookie() {
+      return $cookies.getObject("hungry_pets_user");
+    }
+
+    function display_name() {
+      var local_user = user_from_cookie();
+      if (local_user != null) {
+        if (local_user.first_name != null && local_user.first_name.length > 0) {
+          return local_user.first_name
+        } else {
+          return local_user.email;
+        }
+      }
+      return "";
     }
 
     function signup(email, first_name, last_name, phone_number, password, confirm_password) {
